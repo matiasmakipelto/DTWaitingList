@@ -16,8 +16,8 @@
 		<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 		<style>
 			body {
-				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-					sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+					"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 				font-size: 1rem;
 				font-weight: 400;
 				line-height: 1.5;
@@ -44,7 +44,7 @@
 			h1 {
 				font-size: 2.5rem;
 				text-align: center;
-				margin: 35px 0 20px 0 !important;
+				margin: 10px 0 20px 0 !important;
 			}
 			.h2,
 			h2 {
@@ -105,7 +105,7 @@
 				max-width: 30rem;
 				margin-left: auto;
 				margin-right: auto;
-				padding: 3rem 1rem;
+				padding: 0 1rem 3rem 1rem;
 			}
 
 			.contact-intro > * + * {
@@ -206,8 +206,8 @@
 				--r: 1.2em; /* the radius */
 
 				padding: 1em;
-				border-radius: var(--r) var(--r) min(var(--r), 100% - var(--p) - var(--b) / 4)
-					min(var(--r), var(--p) - var(--b) / 4) / var(--r);
+				border-radius: var(--r) var(--r) min(var(--r), 100% - var(--p) - var(--b) / 4) min(var(--r), var(--p) - var(--b) / 4) /
+					var(--r);
 				background: #00a0dc; /* the main color */
 			}
 			.speech-bubble:before {
@@ -219,53 +219,107 @@
 				aspect-ratio: 1;
 				background: inherit;
 				--g: #000 calc(100% - 1px), #0000;
-				-webkit-mask: radial-gradient(circle closest-side at 12% 88%, var(--g)),
-					radial-gradient(20% 20% at 52% 55%, var(--g)), radial-gradient(25% 25% at 75% 0, var(--g));
+				-webkit-mask: radial-gradient(circle closest-side at 12% 88%, var(--g)), radial-gradient(20% 20% at 52% 55%, var(--g)),
+					radial-gradient(25% 25% at 75% 0, var(--g));
+				mask: radial-gradient(circle closest-side at 12% 88%, var(--g)), radial-gradient(20% 20% at 52% 55%, var(--g)),
+					radial-gradient(25% 25% at 75% 0, var(--g));
 			}
 		</style>
 	</head>
 
 	<body>
 		<section class="contact-section">
-			<a href="./../index.html">Suomeksi</a>
-			<div class="contact-intro">
-				<h1 class="contact-title">Deletask</h1>
-				<p>Reimagining work</p>
+			<div>
+				<a href="./../index.html" style="position: absolute; top: 18px" class="hideAfterSend">Suomeksi</a>
+				<div class="contact-intro">
+					<h1 class="contact-title">Deletask</h1>
 
-				<div class="pic-with-speech-bubble">
-					<img class="pic" src="../static/image.jpeg" />
+					<div class="hideAfterSend">
+						<p>Reimagining work</p>
+						<div class="pic-with-speech-bubble">
+							<img class="pic" src="../static/image.jpeg" />
 
-					<div class="speech-bubble">My housework is taken care of while I'm working</div>
-				</div>
+							<div class="speech-bubble">My housework is taken care of while I'm working</div>
+						</div>
 
-				<p class="contact-description">
-					We are developing a new service that allows you to easily outsource your tasks to others or to earn
-					extra income flexibly by helping others with their tasks.<br /><br />
-					If this sounds like something that might interest you or someone you know, please leave your email
-					in the box below and be amongst the first to be notified when our app launches sometime in early
-					2025. We won't send you spam or unnecessary emails.
-				</p>
-			</div>
-
-			<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-				<input type="hidden" name="access_key" value="6eb4213c-b470-4618-8c2a-9eee9e6c25a9" />
-				<input type="hidden" name="subject" value="New Contact Form Submission from Web3Forms" />
-				<input type="hidden" name="from_name" value="Deletask waiting list" />
-
-				<div class="form-group-container">
-					<div class="form-group">
-						<label for="email" class="form-label">Email</label>
-						<input
-							id="email"
-							name="email"
-							class="form-input"
-							placeholder="example@email.com"
-							type="email"
-						/>
+						<p class="contact-description">
+							We are developing a new service that allows you to easily outsource your tasks to others or to earn extra income
+							flexibly by helping others with their tasks.<br /><br />
+							If this sounds like something that might interest you or someone you know, please leave your email in the box
+							below and be amongst the first to be notified when our app launches sometime in early 2025. We won't send you
+							spam or unnecessary emails.
+						</p>
 					</div>
 				</div>
-				<button type="submit">Send</button>
-			</form>
+			</div>
+
+			<div class="hideAfterSend">
+				<form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="form">
+					<input type="hidden" name="access_key" value="6eb4213c-b470-4618-8c2a-9eee9e6c25a9" />
+					<input type="hidden" name="subject" id="subject" value="New submission to Deletask waiting list" />
+					<input type="hidden" name="from_name" value="Deletask waiting list" />
+
+					<div class="form-group-container">
+						<div class="form-group">
+							<label for="email" class="form-label">Email</label>
+							<input id="email" name="email" class="form-input" placeholder="example@email.com" type="email" />
+						</div>
+					</div>
+					<button type="submit">Send</button>
+				</form>
+			</div>
+			<div id="result"></div>
 		</section>
 	</body>
+
+	<script>
+		const form = document.getElementById("form");
+		const result = document.getElementById("result");
+
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+			const formData = new FormData(form);
+			const object = Object.fromEntries(formData);
+			const json = JSON.stringify(object);
+			result.innerHTML = "Wait a moment...";
+
+			fetch("https://api.web3forms.com/submit", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: json,
+			})
+				.then(async (response) => {
+					let json = await response.json();
+					const elements = document.getElementsByClassName("hideAfterSend");
+					for (let i = 0; i < elements.length; i++) {
+						elements[i].style.display = "none";
+					}
+					if (response.status == 200) {
+						result.innerHTML = `
+						Hi ${document.getElementById("email").value}! 🌟<br/>
+<br/>
+Thank you for joining our waiting list - we're so excited to have you! 🥳<br/>
+You're now one step closer to experiencing Deletask, and we can't wait to make it worth the wait. 🎉<br/>
+<br/>
+Our team is doing the best to launch the platform as soon as possible! 😊<br/>
+<br/>
+Got any questions? Shoot a message at jaakkomakipelto@gmail.com 💌<br/>
+<br/>
+Warm wishes,<br/>
+Deletask
+						`;
+					} else {
+						console.log(response);
+						result.innerHTML = json.message;
+					}
+				})
+				.catch((error) => {
+					console.log(error);
+					result.innerHTML = "Something went wrong!";
+				});
+		});
+	</script>
 </html>
